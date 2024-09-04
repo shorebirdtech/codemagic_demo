@@ -1,6 +1,6 @@
 definitions:
   environment:
-    flutter: stable
+    flutter: 3.24.1
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
