@@ -1,5 +1,42 @@
 workflows:
-  sample-workflow:
-    name: Codemagic Sample Workflow
-    max_build_duration: 120
+  patch-android-workflow:
+    name: Patch Android
     instance_type: mac_mini_m1
+    environment:
+      groups:
+        - shorebird
+    scripts:
+      - *shorebird_setup
+      - *flutter_setup
+      - name: Shorebird Patch
+        script: 
+          shorebird patch android
+  patch-ios-workflow:
+    name: Patch iOS
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - shorebird
+    scripts:
+      - *shorebird_setup
+      - *flutter_setup
+      - name: Shorebird Patch
+        script: |
+          shorebird patch ios
+
+scripts:
+  - &shorebird_setup
+    name: Shorebird Setup
+    script: |
+      # Install Shorebird
+      curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+
+      # Add Shorebird to PATH
+      echo PATH="$HOME/.shorebird/bin:$PATH" >> $CM_ENV
+      
+  - &flutter_setup
+    name: Flutter Setup
+    script: |
+      flutter pub get
+      flutter analyze
+      flutter test
