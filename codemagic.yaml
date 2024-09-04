@@ -33,6 +33,17 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release android
+  release-ios-workflow:
+    name: Release iOS
+    instance_type: mac_mini_m1
+    environment:
+      <<: *shared_env
+    scripts:
+      - *shorebird_setup
+      - *flutter_setup
+      - name: Shorebird Release
+        script: |
+          shorebird release ios
   patch-android-workflow:
     name: Patch Android
     instance_type: mac_mini_m1
