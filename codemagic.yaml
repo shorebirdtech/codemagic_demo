@@ -1,6 +1,4 @@
 definitions:
-  environment:
-    flutter: 3.24.1
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
@@ -23,6 +21,7 @@ workflows:
     name: Release Android
     instance_type: mac_mini_m1
     environment:
+      flutter: 3.24.1
       groups:
         - shorebird
     scripts:
@@ -46,6 +45,7 @@ workflows:
     name: Patch iOS
     instance_type: mac_mini_m1
     environment:
+      flutter: 3.24.1
       groups:
         - shorebird
     scripts:
