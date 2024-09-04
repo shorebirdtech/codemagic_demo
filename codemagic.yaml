@@ -17,6 +17,18 @@ definitions:
         flutter test
 
 workflows:
+  release-android-workflow:
+    name: Release Android
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - shorebird
+    scripts:
+      - *shorebird_setup
+      - *flutter_setup
+      - name: Shorebird Release
+        script: |
+          shorebird release android
   patch-android-workflow:
     name: Patch Android
     instance_type: mac_mini_m1
