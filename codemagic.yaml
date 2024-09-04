@@ -1,4 +1,9 @@
 definitions:
+  environment:
+    shared_env: &shared_env
+      flutter: 3.24.1
+      groups:
+        - shorebird
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
@@ -21,9 +26,7 @@ workflows:
     name: Release Android
     instance_type: mac_mini_m1
     environment:
-      flutter: 3.24.1
-      groups:
-        - shorebird
+      <<: *shared_env
     scripts:
       - *shorebird_setup
       - *flutter_setup
@@ -34,8 +37,7 @@ workflows:
     name: Patch Android
     instance_type: mac_mini_m1
     environment:
-      groups:
-        - shorebird
+      <<: *shared_env
     inputs:
       release_version:
         description: The release version to patch
@@ -48,9 +50,7 @@ workflows:
     name: Patch iOS
     instance_type: mac_mini_m1
     environment:
-      flutter: 3.24.1
-      groups:
-        - shorebird
+      <<: *shared_env
     inputs:
       release_version:
         description: The release version to patch
