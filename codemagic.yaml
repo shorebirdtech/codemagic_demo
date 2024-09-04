@@ -38,6 +38,9 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       <<: *shared_env
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: dev.shorebird.codemagic-demo
     scripts:
       - *shorebird_setup
       - *flutter_setup
@@ -62,6 +65,9 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       <<: *shared_env
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: dev.shorebird.codemagic-demo
     inputs:
       release_version:
         description: The release version to patch
