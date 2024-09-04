@@ -4,6 +4,8 @@ definitions:
       flutter: 3.24.1
       groups:
         - shorebird
+    vars:
+      BUNDLE_ID: dev.shorebird.codemagic-demo
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
@@ -13,7 +15,22 @@ definitions:
 
         # Add Shorebird to PATH
         echo PATH="$HOME/.shorebird/bin:$PATH" >> $CM_ENV
-
+    - &ios_initialize_keychain
+      name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      script: |
+        keychain initialize
+    - &fetch_signing_files
+      name: Fetch signing files
+      script: |
+        app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+    - &add_certs_to_keychain
+      name: Add certs to keychain
+      script: |
+        keychain add-certificates
+    - &use_profiles
+      name: Set up code signing settings on Xcode project
+      script: |
+        xcode-project use-profiles
     - &flutter_setup
       name: Flutter Setup
       script: |
@@ -44,8 +61,10 @@ workflows:
     scripts:
       - *shorebird_setup
       - *flutter_setup
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
+      - *ios_initialize_keychain
+      - *fetch_signing_files
+      - *add_certs_to_keychain
+      - *use_profiles
       - name: Shorebird Release
         script: |
           shorebird release ios
@@ -76,8 +95,10 @@ workflows:
     scripts:
       - *shorebird_setup
       - *flutter_setup
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
+      - *ios_initialize_keychain
+      - *fetch_signing_files
+      - *add_certs_to_keychain
+      - *use_profiles
       - name: Shorebird Patch
         script: |
           shorebird patch ios --release-version=${{ inputs.release_version }}
