@@ -1,4 +1,6 @@
 definitions:
+  environment:
+    flutter: stable
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
