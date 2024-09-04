@@ -36,6 +36,9 @@ workflows:
     environment:
       groups:
         - shorebird
+    inputs:
+      release_version:
+        description: The release version to patch
     scripts:
       - *shorebird_setup
       - *flutter_setup
@@ -48,6 +51,9 @@ workflows:
       flutter: 3.24.1
       groups:
         - shorebird
+    inputs:
+      release_version:
+        description: The release version to patch
     scripts:
       - *shorebird_setup
       - *flutter_setup
