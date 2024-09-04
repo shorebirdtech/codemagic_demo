@@ -44,6 +44,8 @@ workflows:
     scripts:
       - *shorebird_setup
       - *flutter_setup
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
       - name: Shorebird Release
         script: |
           shorebird release ios
@@ -74,6 +76,8 @@ workflows:
     scripts:
       - *shorebird_setup
       - *flutter_setup
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
       - name: Shorebird Patch
         script: |
           shorebird patch ios --release-version=${{ inputs.release_version }}
