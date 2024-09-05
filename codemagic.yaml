@@ -73,6 +73,7 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release ios \
+            --flutter-version=3.24.1 \
             --export-options-plist=/Users/builder/export_options.plist
   patch-android-workflow:
     name: Patch Android
