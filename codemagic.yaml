@@ -57,6 +57,10 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release android --flutter-version=$FLUTTER_VERSION
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
     publishing:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
