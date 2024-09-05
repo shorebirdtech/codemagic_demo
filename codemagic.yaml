@@ -38,10 +38,13 @@ definitions:
       name: Set up code signing settings on Xcode project
       script: |
         xcode-project use-profiles --custom-export-options={\"manageAppVersionAndBuildNumber\":false}
-    - &flutter_setup
-      name: Flutter Setup
+    - &fetch_dependencies
+      name: Fetch Dependencies
       script: |
         flutter pub get
+    - &analyze_and_test
+      name: Analyze and Test
+      script: |
         flutter analyze
         flutter test
 
@@ -55,7 +58,8 @@ workflows:
         - android_keystore
     scripts:
       - *shorebird_setup
-      - *flutter_setup
+      - *fetch_dependencies
+      - *analyze_and_test
       - name: Shorebird Release
         script: |
           shorebird release android \
@@ -81,7 +85,8 @@ workflows:
     scripts:
       - *fetch_signing_files
       - *shorebird_setup
-      - *flutter_setup
+      - *fetch_dependencies
+      - *analyze_and_test
       - *ios_initialize_keychain
       - *add_certs_to_keychain
       - *use_profiles
@@ -107,7 +112,8 @@ workflows:
         description: The release version to patch
     scripts:
       - *shorebird_setup
-      - *flutter_setup
+      - *fetch_dependencies
+      - *analyze_and_test
       - name: Shorebird Patch
         script: |
           shorebird patch android \
@@ -125,7 +131,8 @@ workflows:
         description: The release version to patch
     scripts:
       - *shorebird_setup
-      - *flutter_setup
+      - *fetch_dependencies
+      - *analyze_and_test
       - *ios_initialize_keychain
       - *fetch_signing_files
       - *add_certs_to_keychain
