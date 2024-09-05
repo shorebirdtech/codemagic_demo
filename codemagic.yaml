@@ -6,9 +6,9 @@ definitions:
         - shorebird
         - app_store
         - play_store
-    vars:
-      BUNDLE_ID: dev.shorebird.codemagic-demo
-      FLUTTER_VERSION: 3.24.1
+      vars:
+        BUNDLE_ID: dev.shorebird.codemagic-demo
+        FLUTTER_VERSION: 3.24.1
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
@@ -56,7 +56,7 @@ workflows:
       - *flutter_setup
       - name: Shorebird Release
         script: |
-          shorebird release android --flutter-version=$FLUTTER_VERSION
+          shorebird release android --flutter-version=${{ $FLUTTER_VERSION }}
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
@@ -74,7 +74,7 @@ workflows:
       <<: *shared_env
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: dev.shorebird.codemagic-demo
+        bundle_identifier: "$BUNDLE_ID"
     scripts:
       - *fetch_signing_files
       - *shorebird_setup
@@ -114,7 +114,7 @@ workflows:
       <<: *shared_env
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: dev.shorebird.codemagic-demo
+        bundle_identifier: "$BUNDLE_ID"
     inputs:
       release_version:
         description: The release version to patch
