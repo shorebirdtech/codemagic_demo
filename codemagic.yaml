@@ -56,7 +56,8 @@ workflows:
       - *flutter_setup
       - name: Shorebird Release
         script: |
-          shorebird release android --flutter-version=${{ $FLUTTER_VERSION }}
+          shorebird release android \
+            --flutter-version="$FLUTTER_VERSION"
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
@@ -85,7 +86,7 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release ios \
-            --flutter-version=$FLUTTER_VERSION \
+            --flutter-version="$FLUTTER_VERSION" \
             --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
