@@ -4,6 +4,7 @@ definitions:
       flutter: 3.24.1
       groups:
         - shorebird
+        - app_store
     vars:
       BUNDLE_ID: dev.shorebird.codemagic-demo
   scripts:
