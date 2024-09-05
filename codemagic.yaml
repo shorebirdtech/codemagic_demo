@@ -8,6 +8,7 @@ definitions:
         - play_store
     vars:
       BUNDLE_ID: dev.shorebird.codemagic-demo
+      FLUTTER_VERSION: 3.24.1
   scripts:
     - &shorebird_setup
       name: Shorebird Setup
@@ -55,7 +56,7 @@ workflows:
       - *flutter_setup
       - name: Shorebird Release
         script: |
-          shorebird release android
+          shorebird release android --flutter-version=${{ $FLUTTER_VERSION }}
     publishing:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
@@ -80,7 +81,7 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release ios \
-            --flutter-version=3.24.1 \
+            --flutter-version=${{ $FLUTTER_VERSION }} \
             --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
