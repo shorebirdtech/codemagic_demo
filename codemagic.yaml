@@ -75,6 +75,11 @@ workflows:
           shorebird release ios \
             --flutter-version=3.24.1 \
             --export-options-plist=/Users/builder/export_options.plist
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+
   patch-android-workflow:
     name: Patch Android
     instance_type: mac_mini_m1
