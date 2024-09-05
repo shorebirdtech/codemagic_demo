@@ -77,6 +77,8 @@ workflows:
           shorebird release ios \
             --flutter-version=3.24.1 \
             --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
         auth: integration
