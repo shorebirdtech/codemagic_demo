@@ -108,4 +108,6 @@ workflows:
       - *use_profiles
       - name: Shorebird Patch
         script: |
-          shorebird patch ios --release-version=${{ inputs.release_version }}
+          shorebird patch ios \
+            --release-version=${{ inputs.release_version }} \
+            --export-options-plist=/Users/builder/export_options.plist
