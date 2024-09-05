@@ -4,6 +4,7 @@ definitions:
       flutter: 3.24.1
       groups:
         - shorebird
+        - app_store
     vars:
       BUNDLE_ID: dev.shorebird.codemagic-demo
   scripts:
@@ -22,7 +23,7 @@ definitions:
     - &fetch_signing_files
       name: Fetch signing files
       script: |
-        app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+        app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create --issuer-id "$ISSUER_ID"
     - &add_certs_to_keychain
       name: Add certs to keychain
       script: |
