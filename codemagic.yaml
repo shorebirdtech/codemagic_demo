@@ -59,8 +59,7 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release android \
-            --flutter-version="$FLUTTER_VERSION" \
-            -v
+            --flutter-version="$FLUTTER_VERSION"
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
