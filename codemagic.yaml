@@ -107,6 +107,8 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       <<: *shared_env
+      android_signing:
+        - android_keystore
     inputs:
       release_version:
         description: The release version to patch
