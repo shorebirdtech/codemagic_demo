@@ -10,8 +10,8 @@ definitions:
         BUNDLE_ID: dev.shorebird.codemagic-demo
         FLUTTER_VERSION: 3.24.1
   scripts:
-    - &shorebird_setup
-      name: Shorebird Setup
+    - &shorebird_install
+      name: Install Shorebird
       script: |
         # Install Shorebird
         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
@@ -57,7 +57,7 @@ workflows:
       android_signing:
         - android_keystore
     scripts:
-      - *shorebird_setup
+      - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
       - name: Shorebird Release
@@ -84,7 +84,7 @@ workflows:
         bundle_identifier: "$BUNDLE_ID"
     scripts:
       - *fetch_signing_files
-      - *shorebird_setup
+      - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
       - *ios_initialize_keychain
@@ -111,7 +111,7 @@ workflows:
       release_version:
         description: The release version to patch
     scripts:
-      - *shorebird_setup
+      - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
       - name: Shorebird Patch
@@ -130,7 +130,7 @@ workflows:
       release_version:
         description: The release version to patch
     scripts:
-      - *shorebird_setup
+      - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
       - *ios_initialize_keychain
