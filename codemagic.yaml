@@ -58,12 +58,12 @@ workflows:
       <<: *shared_env
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: dev.shorebird.codemagic-demo
+        bundle_identifier: $BUNDLE_ID
     scripts:
+      - *fetch_signing_files
       - *shorebird_setup
       - *flutter_setup
       - *ios_initialize_keychain
-      - *fetch_signing_files
       - *add_certs_to_keychain
       - *use_profiles
       - name: Shorebird Release
@@ -89,7 +89,7 @@ workflows:
       <<: *shared_env
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: dev.shorebird.codemagic-demo
+        bundle_identifier: $BUNDLE_ID
     inputs:
       release_version:
         description: The release version to patch
