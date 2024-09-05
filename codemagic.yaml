@@ -35,7 +35,7 @@ definitions:
     - &use_profiles
       name: Set up code signing settings on Xcode project
       script: |
-        xcode-project use-profiles
+        xcode-project use-profiles --custom-export-options={\"manageAppVersionAndBuildNumber\":false}
     - &flutter_setup
       name: Flutter Setup
       script: |
