@@ -58,6 +58,8 @@ workflows:
   release-ios-workflow:
     name: Release iOS
     instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: Codemagic
     environment:
       <<: *shared_env
       ios_signing:
