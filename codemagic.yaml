@@ -51,9 +51,8 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       <<: *shared_env
-      environment:
-        android_signing:
-          - android_keystore
+      android_signing:
+        - android_keystore
     scripts:
       - *shorebird_setup
       - *flutter_setup
