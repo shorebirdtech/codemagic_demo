@@ -107,7 +107,9 @@ workflows:
       - *shorebird_setup
       - *flutter_setup
       - name: Shorebird Patch
-        script: shorebird patch android --release-version=${{ inputs.release_version }}
+        script: |
+          shorebird patch android \
+            --release-version=${{ inputs.release_version }}
   patch-ios-workflow:
     name: Patch iOS
     instance_type: mac_mini_m1
