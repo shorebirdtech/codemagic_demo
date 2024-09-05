@@ -68,7 +68,8 @@ workflows:
       - *use_profiles
       - name: Shorebird Release
         script: |
-          shorebird release ios
+          shorebird release ios \
+            --export-options-plist=/Users/builder/export_options.plist
   patch-android-workflow:
     name: Patch Android
     instance_type: mac_mini_m1
