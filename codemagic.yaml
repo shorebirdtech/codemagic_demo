@@ -5,6 +5,7 @@ definitions:
       groups:
         - shorebird
         - app_store
+        - play_store
     vars:
       BUNDLE_ID: dev.shorebird.codemagic-demo
   scripts:
@@ -55,6 +56,10 @@ workflows:
       - name: Shorebird Release
         script: |
           shorebird release android
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
   release-ios-workflow:
     name: Release iOS
     instance_type: mac_mini_m1
