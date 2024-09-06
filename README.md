@@ -1,16 +1,8 @@
 # codemagic_demo
 
-A new Flutter project.
+A Flutter app demonstrating how to use [Codemagic](https://codemagic.io/) to
+release, patch, and distribute a Shorebird app with Android and iOS.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app was created with `flutter create` and no changes have been made to its
+source code, aside from updates to the theme color to validate that patches
+were being applied.
