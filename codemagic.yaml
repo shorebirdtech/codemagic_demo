@@ -83,10 +83,10 @@ workflows:
         distribution_type: app_store
         bundle_identifier: "$BUNDLE_ID"
     scripts:
-      - *fetch_signing_files
       - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
+      - *fetch_signing_files
       - *ios_initialize_keychain
       - *add_certs_to_keychain
       - *use_profiles
@@ -135,8 +135,8 @@ workflows:
       - *shorebird_install
       - *fetch_dependencies
       - *analyze_and_test
-      - *ios_initialize_keychain
       - *fetch_signing_files
+      - *ios_initialize_keychain
       - *add_certs_to_keychain
       - *use_profiles
       - name: Shorebird Patch
