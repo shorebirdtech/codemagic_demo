@@ -92,6 +92,7 @@ workflows:
       - *use_profiles
       - name: Shorebird Release
         script: |
+          cat /Users/builder/export_options.plist
           shorebird release ios \
             --flutter-version="$FLUTTER_VERSION" \
             --export-options-plist=/Users/builder/export_options.plist
