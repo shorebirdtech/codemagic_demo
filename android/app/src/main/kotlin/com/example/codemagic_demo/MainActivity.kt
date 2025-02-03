@@ -1,4 +1,4 @@
-package dev.shorebird.codemagic_demo
+package com.example.codemagic_demo
 
 import io.flutter.embedding.android.FlutterActivity
 
