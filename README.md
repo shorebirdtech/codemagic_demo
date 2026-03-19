@@ -7,4 +7,4 @@ This app was created with `flutter create` and no changes have been made to its
 source code, aside from updates to the theme color to validate that patches
 were being applied.
 
-See https://docs.shorebird.dev/ci/codemagic/ for a detailed guide.
+See [https://docs.shorebird.dev/ci/codemagic/](https://docs.shorebird.dev/code-push/ci/codemagic/) for a detailed guide.
